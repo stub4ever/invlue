@@ -1,0 +1,21 @@
+# Documentation: https://roots.io/trellis/docs/remote-server-setup/
+# `wordpress_sites` options: https://roots.io/trellis/docs/wordpress-sites
+# Define accompanying passwords/secrets in group_vars/production/vault.yml
+
+wordpress_sites:
+  invlue.com:
+    site_hosts:
+      - canonical: invlue.com # Set here the domain you own
+        redirects:
+          - www.invlue.com # to make sure it get www. or CDN
+    local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
+    repo: bitbucket.org:stub4ever/invlue.com.git # replace with your Git repo URL
+    repo_subtree_path: site # relative path to your Bedrock/WP directory in your repo
+    branch: master
+    multisite:
+      enabled: false
+    ssl:
+      enabled: true # Enable SSL
+      provider: letsencrypt
+    cache:
+      enabled: true # Enable cache
