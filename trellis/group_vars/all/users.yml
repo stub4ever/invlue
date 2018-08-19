@@ -7,14 +7,14 @@ users:
     groups:
       - "{{ web_group }}"
     keys:
-      - "{{ lookup('file', '~/.ssh/stub4ever-Bitbucket') }}"
-      # - https://github.com/username.keys
+      - "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      - https://github.com/stub4ever.keys
   - name: "{{ admin_user }}"
     groups:
       - sudo
     keys:
-      - "{{ lookup('file', '~/.ssh/stub4ever-Bitbucket') }}"
-      # - https://github.com/username.keys
+      - "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      - https://github.com/stub4ever.keys
 
 web_user: web
 web_group: www-data
